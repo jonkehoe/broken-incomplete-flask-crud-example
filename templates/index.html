@@ -87,26 +87,23 @@
               }
             });
           });
+  
     
-          // Code for update student
-          $('#updateStudentButton').on('click', function() {
-            var id = $('#id').val();
-            var name = $('#updateName').val();
-            var email = $('#updateEmail').val();
-            console.log(id);
+          // Code for delete student
+          $('#deleteStudentButton').on('click', function() {
+            var name = $('#deleteName').val();
             console.log(name);
-            console.log(email);
             $.ajax({
-              url: '/update',
-              method: 'PUT',
+              url: '/delete',
+              method: 'DELETE',
               contentType: 'application/json',
-              data: JSON.stringify({ id: id, name: name, email: email }),
+              data: JSON.stringify({ name: name }),
               success: function(response) {
-                if (response.Result == 'Success') {
-                  alert('Student updated successfully!');
+                if (response.Result === 'Success') {
+                  alert('Student deleted successfully!');
                   window.location.reload();
                 } else {
-                  alert('Error updating student: ' + response.Message);
+                  alert('Error deleting student: ' + response.Message);
                 }
               }
             });
