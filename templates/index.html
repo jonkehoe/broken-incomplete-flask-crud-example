@@ -52,7 +52,7 @@
     
       <script>
         $(document).ready(function() {
-          // Get all students
+          // Code to get all the students
           $.ajax({
             url: '/default',
             method: 'GET',
@@ -67,7 +67,7 @@
             }
           });
     
-          // Add student
+          // Code for add Student
           $('#addStudentButton').on('click', function() {
             var name = $('#addName').val();
             var email = $('#addEmail').val();
@@ -88,7 +88,7 @@
             });
           });
     
-          // Update student
+          // Code for update student
           $('#updateStudentButton').on('click', function() {
             var id = $('#id').val();
             var name = $('#updateName').val();
@@ -107,26 +107,6 @@
                   window.location.reload();
                 } else {
                   alert('Error updating student: ' + response.Message);
-                }
-              }
-            });
-          });
-    
-          // Delete student
-          $('#deleteStudentButton').on('click', function() {
-            var name = $('#deleteName').val();
-            console.log(name);
-            $.ajax({
-              url: '/delete',
-              method: 'DELETE',
-              contentType: 'application/json',
-              data: JSON.stringify({ name: name }),
-              success: function(response) {
-                if (response.Result === 'Success') {
-                  alert('Student deleted successfully!');
-                  window.location.reload();
-                } else {
-                  alert('Error deleting student: ' + response.Message);
                 }
               }
             });
